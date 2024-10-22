@@ -4,6 +4,11 @@ main() => runApp(new PerguntaApp()); //arrow function
 
 //StatelessWidget - basicamente um componente sem estado
 class PerguntaApp extends StatelessWidget {
+
+  void responder(){
+    print('Pergunta respondida!');
+  }
+
   final perguntas = [
     'Qual é a sua cor favorita?',
     'Qual é o seu animal favorito?',
@@ -24,15 +29,17 @@ class PerguntaApp extends StatelessWidget {
             //botao
             ElevatedButton(
               child: Text('Resposta 1'),
-              onPressed: null,
+              onPressed: responder,
             ),
             ElevatedButton(
               child: Text('Resposta 2'),
-              onPressed: null,
+              onPressed: () {
+                print('Resposta 2 foi selecionada!');
+              },
             ),
             ElevatedButton(
               child: Text('Resposta 3'),
-              onPressed: null,
+              onPressed: () => print('Resposta 3!!!'),
             )
           ],
         ),
