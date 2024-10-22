@@ -5,7 +5,10 @@ main() => runApp(new PerguntaApp()); //arrow function
 //StatelessWidget - basicamente um componente sem estado
 class PerguntaApp extends StatelessWidget {
 
+var perguntaSelecionada = 0;
+
   void responder(){
+    perguntaSelecionada++;
     print('Pergunta respondida!');
   }
 
@@ -20,12 +23,12 @@ class PerguntaApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Perguntas"),
+          title: Text('Perguntas'),
         ),
         body: Column(
           //criando uma coluna para poder agrupar widgets
           children: <Widget> [
-            Text(perguntas[0]),
+            Text(perguntas[perguntaSelecionada]),
             //botao
             ElevatedButton(
               child: Text('Resposta 1'),
@@ -33,13 +36,11 @@ class PerguntaApp extends StatelessWidget {
             ),
             ElevatedButton(
               child: Text('Resposta 2'),
-              onPressed: () {
-                print('Resposta 2 foi selecionada!');
-              },
+              onPressed: responder,
             ),
             ElevatedButton(
               child: Text('Resposta 3'),
-              onPressed: () => print('Resposta 3!!!'),
+              onPressed: responder,
             )
           ],
         ),
