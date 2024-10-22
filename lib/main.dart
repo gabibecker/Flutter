@@ -1,14 +1,15 @@
-
 import 'package:flutter/material.dart';
+
 main() => runApp(new PerguntaApp()); //arrow function
 
-//StatelessWidget - basicamente um componente sem estado
-class PerguntaApp extends StatelessWidget {
+//para gerenciar o estado do widget
+class PerguntaAppState extends State<PerguntaApp> {
+  var perguntaSelecionada = 0;
 
-var perguntaSelecionada = 0;
-
-  void responder(){
-    perguntaSelecionada++;
+  void responder() {
+    setState(() {
+      perguntaSelecionada++;
+    });
     print('Pergunta respondida!');
   }
 
@@ -27,7 +28,7 @@ var perguntaSelecionada = 0;
         ),
         body: Column(
           //criando uma coluna para poder agrupar widgets
-          children: <Widget> [
+          children: <Widget>[
             Text(perguntas[perguntaSelecionada]),
             //botao
             ElevatedButton(
@@ -44,7 +45,15 @@ var perguntaSelecionada = 0;
             )
           ],
         ),
-      ), //Estruturar a aplicação 
+      ), //Estruturar a aplicação
     );
+  }
+}
+
+//StatelessWidget - basicamente um componente sem estado
+class PerguntaApp extends StatefulWidget {
+  
+  PerguntaAppState createState() {
+    return PerguntaAppState();
   }
 }
