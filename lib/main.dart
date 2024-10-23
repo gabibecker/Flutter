@@ -10,15 +10,30 @@ class _PerguntaAppState extends State<PerguntaApp> {
   final List<Map<String, Object>> _perguntas = const [
     {
       'texto': 'Qual é a sua cor favorita?',
-      'respostas': ['Preto', 'Rosa', 'Branco', 'Vermelho'],
+      'respostas': [
+        {'texto': 'Preto', 'nota': 8},
+        {'texto': 'Rosa', 'nota': 10},
+        {'texto': 'Branco', 'nota': 5},
+        {'texto': 'Vermelho', 'nota': 2},
+      ],
     },
     {
       'texto': 'Qual é a seu animal favorito?',
-      'respostas': ['Lontra', 'Calopsita', 'Gato', 'Capivara'],
+      'respostas': [
+         {'texto':'Calopsita', 'nota': 6},
+         {'texto':'Gato', 'nota': 10},
+         {'texto':'Lontra', 'nota': 2},
+         {'texto':'Capivara', 'nota': 9},
+      ],
     },
     {
       'texto': 'Qual é a sua matéria favorita?',
-      'respostas': ['Matemática', 'Ciências', 'Português', 'Geografia'],
+      'respostas': [
+         {'texto':'Matemática', 'nota': 10},
+         {'texto':'Ciências', 'nota': 2},
+         {'texto':'Português', 'nota': 1},
+         {'texto':'Geografia', 'nota': 3},
+      ],
     },
   ];
 
@@ -36,6 +51,7 @@ class _PerguntaAppState extends State<PerguntaApp> {
 
   @override //obrigatoriamente o stateless precisa implementar;
   Widget build(BuildContext context) {
+
     //widget MaterialApp
     return MaterialApp(
       home: Scaffold(
