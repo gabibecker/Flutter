@@ -49,7 +49,13 @@ bool get temPerguntaSelecionada {
             //botao
             ...respostas.map((t) => Resposta(t, _responder)).toList(),
           ],
-        ): null,
+        ): Center(
+          child: Text('Parabéns!', 
+          style: TextStyle(
+            fontSize: 28,
+            color: Colors.pink
+          ),),
+        ),
       ), //Estruturar a aplicação
     );
   }
