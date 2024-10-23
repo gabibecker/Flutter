@@ -29,13 +29,9 @@ class _PerguntaAppState extends State<PerguntaApp> {
 
    @override //obrigatoriamente o stateless precisa implementar;
   Widget build(BuildContext context) {
-    
-  List<Widget> respostas = [];
-
-  for (String textoResp in perguntas[_perguntaSelecionada].cast()['respostas']) {
-      respostas.add(Resposta(textoResp, _responder));
-    }
-
+  
+  List<String> respostas =  perguntas[_perguntaSelecionada].cast()['respostas'];
+  
     //widget MaterialApp
     return MaterialApp(
       home: Scaffold(
@@ -47,7 +43,7 @@ class _PerguntaAppState extends State<PerguntaApp> {
           children: <Widget>[
             Questao(perguntas[_perguntaSelecionada]['texto'].toString()),
             //botao
-            ...respostas,
+            ...respostas.map((t) => Resposta(t, _responder)).toList(),
           ],
         ),
       ), //Estruturar a aplicação

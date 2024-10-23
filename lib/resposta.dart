@@ -10,6 +10,7 @@ class Resposta extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         width: double.infinity,
+        margin: EdgeInsets.fromLTRB(20, 10, 20, 5),
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.pink,
