@@ -6,22 +6,36 @@ main() => runApp(new PerguntaApp()); //arrow function
 
 //para gerenciar o estado do widget
 class _PerguntaAppState extends State<PerguntaApp> {
-  var perguntaSelecionada = 0;
+  var _perguntaSelecionada = 0;
 
   void _responder() {
     setState(() {
-      perguntaSelecionada++;
+      _perguntaSelecionada++;
     });
     print('Pergunta respondida!');
   }
 
-  final perguntas = [
-    'Qual é a sua cor favorita?',
-    'Qual é o seu animal favorito?',
+  final List<Map<String, Object>> perguntas = [
+    { 'texto':'Qual é a sua cor favorita?',
+      'respostas': ['Preto', 'Rosa', 'Branco', 'Vermelho'],
+    },
+    { 'texto':'Qual é a seu animal favorito?',
+      'respostas': ['Lontra', 'Calopsita', 'Gato', 'Capivara'],
+    },
+    { 'texto':'Qual é a sua matéria favorita?',
+      'respostas': ['Matemática', 'Ciências', 'Português', 'Geografia'],
+    },
   ];
 
-  @override //obrigatoriamente o stateless precisa implementar;
+   @override //obrigatoriamente o stateless precisa implementar;
   Widget build(BuildContext context) {
+    
+  List<Widget> respostas = [];
+
+  for (String textoResp in perguntas[_perguntaSelecionada].cast()['respostas']) {
+      respostas.add(Resposta(textoResp, _responder));
+    }
+
     //widget MaterialApp
     return MaterialApp(
       home: Scaffold(
@@ -31,11 +45,9 @@ class _PerguntaAppState extends State<PerguntaApp> {
         body: Column(
           //criando uma coluna para poder agrupar widgets
           children: <Widget>[
-            Questao(perguntas[perguntaSelecionada]),
+            Questao(perguntas[_perguntaSelecionada]['texto'].toString()),
             //botao
-            Resposta('Resposta 1', _responder),
-            Resposta('Resposta 2', _responder),
-            Resposta('Resposta 3', _responder),
+            ...respostas,
           ],
         ),
       ), //Estruturar a aplicação
